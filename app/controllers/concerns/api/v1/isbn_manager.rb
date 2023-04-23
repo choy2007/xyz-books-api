@@ -2,19 +2,19 @@ module Api::V1::IsbnManager
   extend ActiveSupport::Concern
 
   VALID_ISBN_10_REGEX = /^[0-9]{9}[0-9X]$/
-  VALID_ISBN_13_REGEX = /^[9][8][7][0-9]{10}$/
+  VALID_ISBN_13_REGEX = /^[9][7][8][0-9]{10}$/
 
   def convert_isbn
     @isbn = book_params[:isbn].gsub('-', '')
 
     if @isbn =~ VALID_ISBN_13_REGEX
       validate_isbn13
-      IsbnConverter.convert_to_isbn10(@isbn)
+      render json: IsbnConverter.new(@isbn).convert_to_isbn10, status: 200
     elsif @isbn =~ VALID_ISBN_10_REGEX 
       validate_isbn10
-      IsbnConverter.convert_to_isbn13(@isbn)
+      render json: IsbnConverter.new(@isbn).convert_to_isbn13, status: 200
     else
-      return false
+      render json: 'Invalid ISBN', status: 400
     end
   end
 
