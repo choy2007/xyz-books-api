@@ -46,11 +46,11 @@ end
 
 def create_books
   books = [
-    { title: 'American Elf', isbn: '978-1-891830-85-3', publication_year: '2004', publisher: @paste_magazine, edition: 'Book 2', price: 1000 },
-    { title: 'Cosmoknights', isbn: '978-1-60309-454-2', publication_year: '2019', publisher: @publishers_weekly, edition: 'Book 1', price: 2000 },
-    { title: 'Essex County', isbn: '978-1-60309-038-4', publication_year: '1990', publisher: @graywolf_press, price: 500 },
-    { title: 'Hey, Mister (Vol 1)', isbn: '978-1-891830-02-0', publication_year: '2000', publisher: @graywolf_press, edition: 'After School Special', price: 1200 },
-    { title: 'The Underwater Welder', isbn: '978-1-60309-398-9', publication_year: '2022', publisher: @mcsweeney_s, price: 3000 }
+    { title: 'American Elf', isbn: '978-1-891830-85-3', publication_year: '2004', publisher: @paste_magazine, edition: 'Book 2', price: 1000, image_url: 'https://m.media-amazon.com/images/I/51482iujS7L.jpg' },
+    { title: 'Cosmoknights', isbn: '978-1-60309-454-2', publication_year: '2019', publisher: @publishers_weekly, edition: 'Book 1', price: 2000, image_url: 'https://m.media-amazon.com/images/I/81dsfFoWPNL.jpg' },
+    { title: 'Essex County', isbn: '978-1-60309-038-4', publication_year: '1990', publisher: @graywolf_press, price: 500, image_url: 'https://m.media-amazon.com/images/I/61Bsh18xq4L._SX331_BO1,204,203,200_.jpg' },
+    { title: 'Hey, Mister (Vol 1)', isbn: '978-1-891830-02-0', publication_year: '2000', publisher: @graywolf_press, edition: 'After School Special', price: 1200, image_url: 'https://m.media-amazon.com/images/P/1891830023.01._SCLZZZZZZZ_SX500_.jpg' },
+    { title: 'The Underwater Welder', isbn: '978-1-60309-398-9', publication_year: '2022', publisher: @mcsweeney_s, price: 3000,  image_url: 'https://i.ebayimg.com/images/g/k3gAAOSwEFpg6GVy/s-l500.jpg' }
   ]
 
   books.each do |book|
