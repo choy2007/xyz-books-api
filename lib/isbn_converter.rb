@@ -6,14 +6,14 @@ class IsbnConverter
     @isbn = isbn
   end
 
-  def self.convert_to_isbn10
-    isbn10 = @isbn[3..-1]
-    calculate_isbn10_check_digit(isbn10)
+  def convert_to_isbn10
+    isbn10 = @isbn[3..-1].chop
+    isbn10 += calculate_isbn10_check_digit(isbn10).to_s
   end
 
-  def self.convert_to_isbn13
+  def convert_to_isbn13
     isbn13 = "978" + @isbn.chop
-    calculate_check_digit(isbn13)
+    isbn13 += calculate_check_digit(isbn13).to_s
   end
 
   private
