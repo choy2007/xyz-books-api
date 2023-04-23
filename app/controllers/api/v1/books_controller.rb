@@ -1,5 +1,7 @@
-class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :update, :destroy]
+class Api::V1::BooksController < ApplicationController
+  include Api::V1::IsbnConverter
+
+  before_action :set_book, only: [:show, :update, :destroy, :convert_isbn]
 
   # GET /books
   def index
