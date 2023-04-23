@@ -1,5 +1,5 @@
 class Api::V1::BooksController < ApplicationController
-  include Api::V1::IsbnConverter
+  include Api::V1::IsbnManager
 
   before_action :set_book, only: [:show, :update, :destroy]
 
@@ -7,12 +7,12 @@ class Api::V1::BooksController < ApplicationController
   def index
     @books = Book.all
 
-    render json: @books
+    render json: Api::V1::BookSerializer.new(@books).serializable_hash.to_json, status: 200
   end
 
   # GET /books/1
   def show
-    render json: @book
+    render json: Api::V1::BookSerializer.new(@book).serializable_hash.to_json, status: 200
   end
 
   # POST /books
@@ -43,7 +43,7 @@ class Api::V1::BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = Book.find(params[:id])
+      @book = Book.find_by(isbn: params[:isbn])
     end
 
     # Only allow a list of trusted parameters through.
