@@ -10,7 +10,7 @@ class IsbnConverter
 
   def convert_to_isbn13
     isbn13 = "978" + @isbn.chop
-    isbn13 += calculate_check_digit(isbn13).to_s
+    isbn13 += calculate_isbn13_check_digit(isbn13).to_s
   end
 
   private
