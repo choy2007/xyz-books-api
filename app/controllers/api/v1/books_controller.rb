@@ -9,7 +9,7 @@ class Api::V1::BooksController < ApplicationController
     if @book
       render json: Api::V1::BookSerializer.new(@book).serializable_hash.to_json, status: 200
     else
-      render json: { error: "Book not found" }, status: 404
+      render json: { error: { message: "Book not found" } }, status: 404
     end
   rescue InvalidIsbn
     render json: { errors: 'Invalid ISBN' }, status: 400
@@ -18,6 +18,6 @@ class Api::V1::BooksController < ApplicationController
   private
 
   def set_book
-    @book = Book.find_by(isbn: params[:isbn])
+    @book = Book.find_by(isbn: params[:isbn].gsub('-', ''))
   end
 end
